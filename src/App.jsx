@@ -158,7 +158,7 @@ export default function App() {
 
         {/* Experience Section */}
         <SectionWrapper id="experience">
-          <h2 className="section-title">Experience & Internships</h2>
+          <h2 className="section-title">Training</h2>
           <div className="timeline">
             {[
               // { role: '', company: 'Gokboru', date: '2022 - Present', desc: 'Working on core backend services and user-facing dashboards. Improved API latency by 30%.' },
@@ -180,46 +180,55 @@ export default function App() {
             {[
               {
                 title: 'Blogging Platform',
-                desc: 'Full-stack application with real-time inventory.',
+                desc: 'A full-stack blogging platform that enables users to create, edit, publish, and manage blog posts through a modern and responsive interface. The application supports secure authentication, dynamic content management, and seamless interaction between the frontend and backend.',
                 tech: ['React', 'Node.js', 'MongoDB'],
+                image: 'Blog.png', // Replace with actual image path like '/blog.png'
                 github: 'https://github.com/Ayushkumar-4/Blogspace',
                 link: '#'
               },
               {
                 title: 'Chat App',
-                desc: ' Realtime Chat Application.',
+                desc: 'A real-time chat application that allows users to communicate instantly through a modern messaging interface. The platform supports live message updates, secure user sessions, and smooth communication across devices.',
                 tech: ['React', 'Node.js', 'MongoDB'],
+                image: 'chatApp.png', // Replace with actual image path like '/chat.png'
                 github: 'https://github.com/Ayushkumar-4/ChatApp',
                 link: '#'
               },
               {
                 title: 'Startup Financing Platform',
-                desc: ' A scalable MERN-based startup funding platform enabling secure discovery, investment, and real-time portfolio tracking',
+                desc: 'A scalable MERN-based startup funding platform enabling secure discovery, investment, and real-time portfolio tracking.',
                 tech: ['Node JS', 'FastAPI', 'React'],
+                image: 'startup.png', // Replace with actual image path like '/seedx.png'
                 github: 'https://github.com/Ayushkumar-4/SeedX',
                 link: '#'
               }
             ].map((project, idx) => (
-              <div key={idx} className="glass-card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <FaBook size={24} color="var(--accent-primary)" />
-                  <div style={{ display: 'flex', gap: '1rem' }}>
+              <div key={idx} className="glass-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ height: '220px', backgroundColor: 'rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center', alignItems: 'center', borderBottom: '1px solid var(--border-light)', position: 'relative' }}>
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  ) : (
+                    <FaCode size={64} style={{ color: 'var(--text-secondary)', opacity: 0.5 }} />
+                  )}
+                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', display: 'flex', gap: '0.75rem', zIndex: 10 }}>
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noreferrer" className="nav-link">
-                        <FaGithub size={20} />
+                      <a href={project.github} target="_blank" rel="noreferrer" className="nav-link" style={{ padding: '0.5rem', backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--border-light)' }}>
+                        <FaGithub size={18} />
                       </a>
                     )}
                     {project.link && project.link !== '#' && (
-                      <a href={project.link} target="_blank" rel="noreferrer" className="nav-link">
-                        <FaExternalLinkAlt size={18} />
+                      <a href={project.link} target="_blank" rel="noreferrer" className="nav-link" style={{ padding: '0.5rem', backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid var(--border-light)' }}>
+                        <FaExternalLinkAlt size={16} />
                       </a>
                     )}
                   </div>
                 </div>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{project.title}</h3>
-                <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)' }}>{project.desc}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', fontSize: '0.85rem', color: 'var(--accent-secondary)' }}>
-                  {project.tech.map(t => <span key={t}>{t}</span>)}
+                <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{project.title}</h3>
+                  <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)', flexGrow: 1 }}>{project.desc}</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', fontSize: '0.85rem', color: 'var(--accent-secondary)' }}>
+                    {project.tech.map(t => <span key={t} style={{ border: '1px solid var(--border-light)', padding: '0.25rem 0.75rem', borderRadius: '15px' }}>{t}</span>)}
+                  </div>
                 </div>
               </div>
             ))}
